@@ -48,7 +48,7 @@ class _SplashViewState extends State<SplashView>
       const Duration(seconds: 4),
       () {
         if (mounted) {
-          context.go(AppRoutes.kLoginView);
+          context.go(AppRoutes.kLoginOrSignUpView);
         }
       },
     );
