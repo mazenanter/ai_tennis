@@ -15,27 +15,21 @@ class LoginOrSignupView extends StatelessWidget {
         children: [
           const CustomShapeContainer(),
           const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 64),
-            child: CustomButton(
-              onPress: () {
-                context.go(AppRoutes.kLoginView);
-              },
-              buttonText: 'Sign In',
-            ),
+          CustomButton(
+            onPress: () {
+              GoRouter.of(context).push(AppRoutes.kLoginView);
+            },
+            buttonText: 'Sign In',
           ),
           const SizedBox(
             height: 16,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 64),
-            child: CustomButton(
-              onPress: () {
-                context.go(AppRoutes.kRegisterView);
-              },
-              buttonColor: Colors.white,
-              buttonText: 'Sign Up',
-            ),
+          CustomButton(
+            onPress: () {
+              GoRouter.of(context).push(AppRoutes.kRegisterView);
+            },
+            buttonColor: Colors.white,
+            buttonText: 'Sign Up',
           ),
           const SizedBox(
             height: 80,

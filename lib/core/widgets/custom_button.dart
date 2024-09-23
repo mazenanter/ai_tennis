@@ -13,20 +13,23 @@ class CustomButton extends StatelessWidget {
   final void Function()? onPress;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor ?? AppColors.buttonColor,
-        ),
-        onPressed: onPress,
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            color: buttonColor == null ? Colors.white : Colors.black,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 64),
+      child: SizedBox(
+        width: double.infinity,
+        height: 50,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: buttonColor ?? AppColors.buttonColor,
+          ),
+          onPressed: onPress,
+          child: Text(
+            buttonText,
+            style: TextStyle(
+              color: buttonColor == null ? Colors.white : Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
