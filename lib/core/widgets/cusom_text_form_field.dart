@@ -4,8 +4,10 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
+    required this.controller,
   });
   final String hintText;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: controller,
             style: const TextStyle(
               color: Colors.white,
             ),

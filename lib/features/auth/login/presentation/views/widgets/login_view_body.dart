@@ -5,9 +5,16 @@ import 'package:ai_tennis/core/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginViewBody extends StatelessWidget {
+class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
 
+  @override
+  State<LoginViewBody> createState() => _LoginViewBodyState();
+}
+
+class _LoginViewBodyState extends State<LoginViewBody> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,13 +40,15 @@ class LoginViewBody extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const CustomTextFormField(
+          CustomTextFormField(
+            controller: emailController,
             hintText: 'Email',
           ),
           const SizedBox(
             height: 10,
           ),
-          const CustomTextFormField(
+          CustomTextFormField(
+            controller: passwordController,
             hintText: 'Password',
           ),
           const SizedBox(
@@ -51,7 +60,7 @@ class LoginViewBody extends StatelessWidget {
           ),
           CustomTextButton(
             onPress: () {
-              context.go(AppRoutes.kRegisterView);
+              GoRouter.of(context).push(AppRoutes.kRegisterView);
             },
             text: 'DON\'T HAVE AN ACCOUT?',
           ),
