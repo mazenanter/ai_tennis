@@ -5,9 +5,13 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.controller,
+    this.secureText = false,
+    required this.validator,
   });
   final String hintText;
   final TextEditingController controller;
+  final bool secureText;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,6 +31,8 @@ class CustomTextFormField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            validator: validator,
+            obscureText: secureText,
             controller: controller,
             style: const TextStyle(
               color: Colors.white,
@@ -35,18 +41,20 @@ class CustomTextFormField extends StatelessWidget {
             decoration: InputDecoration(
               filled: true,
               fillColor: const Color(0xff242D4A),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(32),
-                borderSide: BorderSide.none,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(32),
-                borderSide: BorderSide.none,
-              ),
+              enabledBorder: buildBorder(),
+              focusedBorder: buildBorder(),
+              border: buildBorder(),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  OutlineInputBorder buildBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(32),
+      borderSide: BorderSide.none,
     );
   }
 }

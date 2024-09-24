@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 class CustomBackgroundColor extends StatelessWidget {
   const CustomBackgroundColor({
     super.key,
-    required this.child,
   });
-  final Widget child;
+  // final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,6 @@ class CustomBackgroundColor extends StatelessWidget {
           ],
         ),
       ),
-      child: child,
     );
   }
 }

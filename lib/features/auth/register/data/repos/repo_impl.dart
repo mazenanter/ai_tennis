@@ -20,7 +20,7 @@ class RegisterRepoImpl extends RegisterRepo {
       );
       User? userId = auth.currentUser;
       final String uId = userId!.uid;
-      saveUserInfo(uId, email, password);
+      saveUserInfo(uId, email, name);
       return right(user);
     } catch (e) {
       if (e is FirebaseAuthException) {

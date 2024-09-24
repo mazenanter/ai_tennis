@@ -8,8 +8,11 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: CustomBackgroundColor(
-        child: RegisterViewBody(),
+      body: Stack(
+        children: [
+          CustomBackgroundColor(),
+          RegisterViewBody(),
+        ],
       ),
     );
   }

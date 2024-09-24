@@ -41,6 +41,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             height: 32,
           ),
           CustomTextFormField(
+            validator: (p0) {
+              if (p0!.isEmpty) {
+                return 'must not be empty';
+              }
+              return '';
+            },
             controller: emailController,
             hintText: 'Email',
           ),
@@ -48,6 +54,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             height: 10,
           ),
           CustomTextFormField(
+            validator: (p0) {
+              if (p0!.isEmpty) {
+                return 'must not be empty';
+              }
+              return '';
+            },
             controller: passwordController,
             hintText: 'Password',
           ),
