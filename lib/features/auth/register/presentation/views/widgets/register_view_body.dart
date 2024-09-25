@@ -37,112 +37,120 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           }
         },
         builder: (context, state) {
-          return SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.22,
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
                   ),
-                  const Text(
-                    'SIGN UP',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
+                  child: IntrinsicHeight(
+                    child: SafeArea(
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'SIGN UP',
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const Text(
+                              'create your account',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w200,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            CustomTextFormField(
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'must not be empty';
+                                }
+                                return null;
+                              },
+                              controller: nameController,
+                              hintText: 'Full Name',
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomTextFormField(
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'must not be empty';
+                                }
+                                if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                    .hasMatch(value)) {
+                                  return 'Enter a valid email';
+                                }
+                                return null;
+                              },
+                              controller: emialController,
+                              hintText: 'Email',
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomTextFormField(
+                              validator: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'must not be empty';
+                                }
+                                if (value.length < 6) {
+                                  return 'Password must be at least 6 characters';
+                                }
+                                return null; //
+                              },
+                              controller: passwordController,
+                              secureText: true,
+                              hintText: 'Password',
+                            ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            ConditionalBuilder(
+                              condition: state is UserRegisterLoading,
+                              builder: (context) => const CustomIndicator(),
+                              fallback: (context) => CustomButton(
+                                onPress: () {
+                                  if (formKey.currentState!.validate()) {
+                                    BlocProvider.of<UserRegisterCubit>(context)
+                                        .registerUser(
+                                      name: nameController.text,
+                                      email: emialController.text,
+                                      password: passwordController.text,
+                                    );
+                                  }
+                                },
+                                buttonText: 'Create',
+                              ),
+                            ),
+                            CustomTextButton(
+                              onPress: () {
+                                GoRouter.of(context).push(AppRoutes.kLoginView);
+                              },
+                              text: 'HAVE AN ACCOUT?',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  const Text(
-                    'create your account',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w200,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  CustomTextFormField(
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'must not be empty';
-                      }
-                      return null;
-                    },
-                    controller: nameController,
-                    hintText: 'Full Name',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextFormField(
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'must not be empty';
-                      }
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    },
-                    controller: emialController,
-                    hintText: 'Email',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextFormField(
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'must not be empty';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null; //
-                    },
-                    controller: passwordController,
-                    secureText: true,
-                    hintText: 'Password',
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  ConditionalBuilder(
-                    condition: state is UserRegisterLoading,
-                    builder: (context) => const CustomIndicator(),
-                    fallback: (context) => CustomButton(
-                      onPress: () {
-                        if (formKey.currentState!.validate()) {
-                          BlocProvider.of<UserRegisterCubit>(context)
-                              .registerUser(
-                            name: nameController.text,
-                            email: emialController.text,
-                            password: passwordController.text,
-                          );
-                        }
-                      },
-                      buttonText: 'Create',
-                    ),
-                  ),
-                  CustomTextButton(
-                    onPress: () {
-                      GoRouter.of(context).push(AppRoutes.kLoginView);
-                    },
-                    text: 'HAVE AN ACCOUT?',
-                  ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           );
         },
       ),
     );
   }
 }
-
-
