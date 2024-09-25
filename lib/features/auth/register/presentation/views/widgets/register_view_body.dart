@@ -1,7 +1,7 @@
 import 'package:ai_tennis/core/app_routes/app_routes.dart';
-import 'package:ai_tennis/core/utils/app_colors.dart';
 import 'package:ai_tennis/core/widgets/cusom_text_form_field.dart';
 import 'package:ai_tennis/core/widgets/custom_button.dart';
+import 'package:ai_tennis/core/widgets/custom_indicato.dart';
 import 'package:ai_tennis/core/widgets/custom_text_button.dart';
 import 'package:ai_tennis/features/auth/login/presentation/views/widgets/snack_bar.dart';
 import 'package:ai_tennis/features/auth/register/data/repos/repo_impl.dart';
@@ -114,11 +114,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   ),
                   ConditionalBuilder(
                     condition: state is UserRegisterLoading,
-                    builder: (context) => const Center(
-                        child: CircularProgressIndicator(
-                      backgroundColor: Colors.black,
-                      color: AppColors.buttonColor,
-                    )),
+                    builder: (context) => const CustomIndicator(),
                     fallback: (context) => CustomButton(
                       onPress: () {
                         if (formKey.currentState!.validate()) {
@@ -148,3 +144,5 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     );
   }
 }
+
+
