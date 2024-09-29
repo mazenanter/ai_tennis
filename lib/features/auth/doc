@@ -7,6 +7,7 @@ login or signup : ui screen show login button and signup button To choose betwee
 
 register: allow user to create her account 
 data : repo : represent data to firebase and store user information to firestore database
+model : represent user data to send to firebase by toJson method
 presentation : manager : manage states loading and success and error and handle errors and handle ui 
 view :ui 
  widgets : components widgets to use in view
