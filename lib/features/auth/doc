@@ -1,4 +1,4 @@
-login: allow user to login using email and password 
+login dir: allow user to login using email and password 
 data : repo : represent data to firebase 
 presentation : manager : manage states loading and success and error and handle errors and handle ui 
 view :ui 
