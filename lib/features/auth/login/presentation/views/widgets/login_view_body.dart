@@ -1,9 +1,10 @@
 import 'package:ai_tennis/core/app_routes/app_routes.dart';
+import 'package:ai_tennis/core/services/di.dart';
 import 'package:ai_tennis/core/widgets/cusom_text_form_field.dart';
 import 'package:ai_tennis/core/widgets/custom_button.dart';
 import 'package:ai_tennis/core/widgets/custom_indicato.dart';
 import 'package:ai_tennis/core/widgets/custom_text_button.dart';
-import 'package:ai_tennis/features/auth/login/data/repos/repo_impl.dart';
+import 'package:ai_tennis/features/auth/login/data/repos/repo.dart';
 import 'package:ai_tennis/features/auth/login/presentation/manager/login_user_cubit/login_user_cubit_cubit.dart';
 import 'package:ai_tennis/features/auth/login/presentation/views/widgets/snack_bar.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -25,7 +26,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginUserCubitCubit(LoginUserRepoImpl()),
+      create: (context) => LoginUserCubitCubit(getit.get<LoginUserRepo>()),
       child: BlocConsumer<LoginUserCubitCubit, LoginUserCubitState>(
         listener: (context, state) {
           if (state is LoginUserCubitSuccess) {
