@@ -31,7 +31,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         listener: (context, state) {
           if (state is LoginUserCubitSuccess) {
             successSnackbar(context, "login successfully");
-            //GoRouter.of(context).push(AppRoutes.kLoginView);
+            context.go(AppRoutes.kLocationView);
           } else if (state is LoginUserCubitError) {
             errorSnackBar(context, state.errMsg);
           }
