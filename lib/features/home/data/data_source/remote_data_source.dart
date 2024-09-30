@@ -16,12 +16,13 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       {required String cityName, required int hour}) async {
     var res = await apiService.getData(
       endPoint:
-          'forecast.json?q=$cityName&hour=$hour&day=5&key=40cf15699e2240ae8d0114154243009',
+          'forecast.json?q=$cityName&hour=$hour&days=5&key=40cf15699e2240ae8d0114154243009',
     );
 
     WeatherModel weatherModel = WeatherModel.fromJson(res);
 
     WeatherEntity weatherEntity = weatherModel.toEntity();
+
     return weatherEntity;
   }
 }

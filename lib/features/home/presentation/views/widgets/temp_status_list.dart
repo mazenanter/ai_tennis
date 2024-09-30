@@ -14,6 +14,8 @@ class TempStatusList extends StatelessWidget {
       children: List.generate(
         3,
         (index) => TempStatusWidget(
+          icon: weatherEntity.icon,
+          index: index,
           weatherEntity: index == 0
               ? weatherEntity.maxTemp.round().toString()
               : index == 1

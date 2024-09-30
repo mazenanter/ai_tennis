@@ -4,9 +4,11 @@ class WeatherEntity {
   final String weatherCondition;
   final double maxTemp;
   final double minTemp;
+  final String icon;
   final List<String> forecastDates;
 
   WeatherEntity({
+    required this.icon,
     required this.cityName,
     required this.currentTemp,
     required this.weatherCondition,

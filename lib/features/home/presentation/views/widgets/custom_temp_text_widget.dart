@@ -10,31 +10,44 @@ class CustomTempTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      child: Column(
         children: [
           Text(
-            temp,
-            style: AppStyles.bold28.copyWith(
+            'Temp',
+            style: AppStyles.bold23.copyWith(
               color: Colors.white,
-              fontSize: 50,
-              fontWeight: FontWeight.w900,
             ),
           ),
           const SizedBox(
-            width: 6,
+            height: 10,
           ),
-          Container(
-            width: 12,
-            height: 12,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                temp,
+                style: AppStyles.bold28.copyWith(
                   color: Colors.white,
-                  width: 2,
-                )),
+                  fontSize: 55,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const SizedBox(
+                width: 6,
+              ),
+              Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2,
+                    )),
+              ),
+            ],
           ),
         ],
       ),

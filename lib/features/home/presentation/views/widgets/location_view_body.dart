@@ -20,10 +20,10 @@ class _LocationViewBodyState extends State<LocationViewBody> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
-    return SafeArea(
-      child: ModalProgressHUD(
-        opacity: 0.1,
-        inAsyncCall: _isLoading,
+    return ModalProgressHUD(
+      opacity: 0.1,
+      inAsyncCall: _isLoading,
+      child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(

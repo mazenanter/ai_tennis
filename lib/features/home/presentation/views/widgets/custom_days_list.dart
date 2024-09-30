@@ -18,7 +18,7 @@ class CustomDaysList extends StatelessWidget {
       ),
       child: Row(
         children: List.generate(
-          1,
+          weatherEntity.forecastDates.length,
           (index) => CustomDayWidget(
             weatherEntity: weatherEntity,
             index: index,

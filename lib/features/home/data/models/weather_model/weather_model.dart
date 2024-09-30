@@ -31,11 +31,14 @@ class WeatherModel {
   WeatherEntity toEntity() {
     List<String> forecastDates = [];
 
-    forecastDates = forecast!.forecastday.map((day) => day.date).toList();
+    if (forecast != null && forecast!.forecastday.isNotEmpty) {
+      forecastDates = forecast!.forecastday.map((day) => day.date).toList();
+    }
 
     return WeatherEntity(
       cityName: location?.name ?? 'Unknown',
       currentTemp: current?.tempC ?? 0.0,
+      icon: current!.condition!.icon!,
       weatherCondition: current?.condition?.text ?? 'Unknown',
       maxTemp: forecast?.forecastday[0].day?.maxtempC ?? 0.0,
       minTemp: forecast?.forecastday[0].day?.mintempC ?? 0.0,

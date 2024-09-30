@@ -12,7 +12,7 @@ class TempWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
