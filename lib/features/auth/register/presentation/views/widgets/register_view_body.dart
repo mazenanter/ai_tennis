@@ -4,7 +4,7 @@ import 'package:ai_tennis/core/widgets/cusom_text_form_field.dart';
 import 'package:ai_tennis/core/widgets/custom_button.dart';
 import 'package:ai_tennis/core/widgets/custom_indicato.dart';
 import 'package:ai_tennis/core/widgets/custom_text_button.dart';
-import 'package:ai_tennis/features/auth/login/presentation/views/widgets/snack_bar.dart';
+import 'package:ai_tennis/core/widgets/snack_bar.dart';
 import 'package:ai_tennis/features/auth/register/data/repos/repo.dart';
 import 'package:ai_tennis/features/auth/register/presentation/manager/user_register_cubit/user_register_cubit.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
