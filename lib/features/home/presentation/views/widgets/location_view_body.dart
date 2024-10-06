@@ -21,6 +21,10 @@ class _LocationViewBodyState extends State<LocationViewBody> {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     return ModalProgressHUD(
+      progressIndicator: const CircularProgressIndicator(
+        color: Colors.white,
+        backgroundColor: Colors.black,
+      ),
       opacity: 0.1,
       inAsyncCall: _isLoading,
       child: SafeArea(

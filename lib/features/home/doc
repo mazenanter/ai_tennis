@@ -1,0 +1,8 @@
+home feature 
+data/ data source : call apiservice to get weather from api
+models:weather model : represent weather data from api 
+repoimpl : call remotedatasource and handle error
+domain/ entity: It represents the data I need from response 
+repo :abstracts data sources, providing a unified interface for managing data independently of its source.
+presentation / manager : manage ui state success or fail or loading 
+view : ui 

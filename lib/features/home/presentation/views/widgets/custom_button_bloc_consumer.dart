@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ai_tennis/core/app_routes/app_routes.dart';
 import 'package:ai_tennis/core/widgets/custom_button.dart';
 import 'package:ai_tennis/core/widgets/custom_indicato.dart';
@@ -23,7 +21,6 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     return BlocConsumer<GetWeatherCubit, GetWeatherState>(
       listener: (context, state) {
         if (state is GetWeatherSuccess) {
-          log(state.weatherEntity.cityName);
           GoRouter.of(context).push(AppRoutes.kHomeView);
         } else if (state is GetWeatherError) {
           errorSnackBar(
