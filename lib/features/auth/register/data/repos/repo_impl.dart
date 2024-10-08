@@ -1,4 +1,4 @@
-import 'package:ai_tennis/core/errors/failure.dart';
+import 'package:ai_tennis/core/errors/firebase_failure.dart';
 import 'package:ai_tennis/features/auth/register/data/models/user_register_model.dart';
 import 'package:ai_tennis/features/auth/register/data/repos/repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterRepoImpl extends RegisterRepo {
   @override
-  Future<Either<Failure, UserCredential>> registerUser({
+  Future<Either<FirebaseFailure, UserCredential>> registerUser({
     required String name,
     required String email,
     required String password,
@@ -24,9 +24,9 @@ class RegisterRepoImpl extends RegisterRepo {
       return right(user);
     } catch (e) {
       if (e is FirebaseAuthException) {
-        return left(ServerFailure.fromFirebaseErr(e));
+        return left(FirebaseServerFailure.fromFirebaseErr(e));
       }
-      return left(ServerFailure(e.toString()));
+      return left(FirebaseServerFailure(e.toString()));
     }
   }
 
