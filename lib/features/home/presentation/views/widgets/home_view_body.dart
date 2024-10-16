@@ -2,6 +2,7 @@ import 'package:ai_tennis/core/utils/app_styles.dart';
 import 'package:ai_tennis/core/widgets/custom_button.dart';
 import 'package:ai_tennis/features/home/presentation/manager/get_weather_cubit/get_weather_cubit.dart';
 import 'package:ai_tennis/features/home/presentation/views/widgets/custom_days_list.dart';
+import 'package:ai_tennis/features/home/presentation/views/widgets/custom_diolog.dart';
 import 'package:ai_tennis/features/home/presentation/views/widgets/header_widget.dart';
 import 'package:ai_tennis/features/home/presentation/views/widgets/temp_status_list.dart';
 import 'package:ai_tennis/features/home/presentation/views/widgets/temp_widget.dart';
@@ -16,7 +17,20 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetWeatherCubit, GetWeatherState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is GetPredictionSuccess) {
+          String message;
+
+          if (state.predicitions[0] == 0) {
+            message = 'Please don\'t go to the training today';
+          } else if (state.predicitions[0] == 1) {
+            message = 'You can go to the training today';
+          } else {
+            message = 'Unknown Prediction';
+          }
+          customDiolog(context, state, message);
+        }
+      },
       builder: (context, state) {
         var model = BlocProvider.of<GetWeatherCubit>(context).weatherEntity;
         var height = MediaQuery.sizeOf(context).height;

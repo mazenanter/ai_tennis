@@ -30,42 +30,44 @@ class _LocationViewBodyState extends State<LocationViewBody> {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              const HeaderWidget(),
-              SizedBox(
-                height: height * 0.025,
-              ),
-              const CustomIcon(),
-              SizedBox(
-                height: height * 0.080,
-              ),
-              CustomLocationFormField(
-                onChanged: (value) {
-                  cityName = value;
-                  setState(() {});
-                },
-                controller: destinationController,
-                onTap: () async {
-                  setState(() {
-                    _isLoading = true;
-                  });
-                  String location = await LocatorService.getCityName();
-                  setState(() {
-                    destinationController.text = location;
-                    cityName = location;
-                    _isLoading = false;
-                  });
-                },
-              ),
-              SizedBox(
-                height: height * 0.032,
-              ),
-              CustomButtonBlocConsumer(
-                cityName: cityName,
-                hour: 17,
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const HeaderWidget(),
+                SizedBox(
+                  height: height * 0.025,
+                ),
+                const CustomIcon(),
+                SizedBox(
+                  height: height * 0.080,
+                ),
+                CustomLocationFormField(
+                  onChanged: (value) {
+                    cityName = value;
+                    setState(() {});
+                  },
+                  controller: destinationController,
+                  onTap: () async {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    String location = await LocatorService.getCityName();
+                    setState(() {
+                      destinationController.text = location;
+                      cityName = location;
+                      _isLoading = false;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: height * 0.032,
+                ),
+                CustomButtonBlocConsumer(
+                  cityName: cityName,
+                  hour: 17,
+                ),
+              ],
+            ),
           ),
         ),
       ),
