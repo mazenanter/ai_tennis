@@ -16,11 +16,15 @@ class CustomButtonBlocConsumer extends StatelessWidget {
   });
   final String cityName;
   final int hour;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetWeatherCubit, GetWeatherState>(
       listener: (context, state) {
         if (state is GetWeatherSuccess) {
+          var model = state.weatherEntity;
+          BlocProvider.of<GetWeatherCubit>(context)
+              .getPrediction(features: model.getListAiFeature());
           GoRouter.of(context).push(AppRoutes.kHomeView);
         } else if (state is GetWeatherError) {
           errorSnackBar(
