@@ -36,6 +36,8 @@ class WeatherModel {
     }
 
     return WeatherEntity(
+
+      humidity: current?.humidity ?? 0,
       cityName: location?.name ?? 'Unknown',
       currentTemp: current?.tempC ?? 0.0,
       icon: current!.condition!.icon!,

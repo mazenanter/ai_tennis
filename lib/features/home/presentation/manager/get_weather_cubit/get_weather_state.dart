@@ -18,3 +18,12 @@ final class GetWeatherError extends GetWeatherState {
 
   GetWeatherError(this.errMsg);
 }
+final class GetPredictionLoading extends GetWeatherState {}
+final class GetPredictionSuccess extends GetWeatherState
+{
+  final List<dynamic>predicitions;
+
+  GetPredictionSuccess(this.predicitions);
+}
+final class GetPredictionError extends GetWeatherState {}
+
