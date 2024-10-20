@@ -1,4 +1,4 @@
-# TennisWeather 🌤🎾
+# AiTennis 🌤🎾
 
 **TennisWeather** is a Flutter app designed to help tennis players determine whether the weather conditions are suitable for playing on the court. The app uses artificial intelligence (AI) to analyze weather data based on the user's geographic location and provides accurate recommendations.
 
