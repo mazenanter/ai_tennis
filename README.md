@@ -1,6 +1,6 @@
-# AiTennis 🌤🎾
+# Ai Tennis 🌤🎾
 
-**TennisWeather** is a Flutter app designed to help tennis players determine whether the weather conditions are suitable for playing on the court. The app uses artificial intelligence (AI) to analyze weather data based on the user's geographic location and provides accurate recommendations.
+**AiTennis** is a Flutter app designed to help tennis players determine whether the weather conditions are suitable for playing on the court. The app uses artificial intelligence (AI) to analyze weather data based on the user's geographic location and provides accurate recommendations.
 
 ## Demo Video 🎥
 Watch the demo video to see how the app works: [Click here to watch the video](#)
@@ -32,11 +32,11 @@ Watch the demo video to see how the app works: [Click here to watch the video](#
 1. Ensure you have [Flutter](https://flutter.dev/docs/get-started/install) installed on your machine.
 2. Clone the repository:
     ```bash
-    git clone https://github.com/username/TennisWeather.git
+    git clone https://github.com/username/ai_tennis.git
     ```
 3. Navigate to the project directory:
     ```bash
-    cd TennisWeather
+    cd ai_tennis
     ```
 4. Install the dependencies:
     ```bash
